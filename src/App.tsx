@@ -1,7 +1,7 @@
 import { SearchBar } from './SearchBar';
 import { WeatherCard } from './components/WeatherCard';
 import { useState } from 'react';
-import { Heading, Box, Flex } from '@chakra-ui/react';
+import { Heading, Flex } from '@chakra-ui/react';
 
 type WeatherData = {
   temperature: string;
