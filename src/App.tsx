@@ -72,7 +72,7 @@ function App() {
     <>
       <Header />
       <Flex className="App" direction="column" align="center">
-        <Heading pb="16px">Let&apos;s check the weather now in...</Heading>
+        <Heading size="2xl">Let&apos;s check the weather now in...</Heading>
         <SearchBar fetchLocations={fetchLocations} />
         {locations &&
           locations.map(
