@@ -1,7 +1,7 @@
 import { SearchBar } from './SearchBar';
 import { WeatherCard } from './components/WeatherCard';
 import { useState } from 'react';
-import { Heading, Flex } from '@chakra-ui/react';
+import { Text, Flex } from '@chakra-ui/react';
 import { Header } from './components/Header';
 
 type WeatherData = {
@@ -72,7 +72,14 @@ function App() {
     <>
       <Header />
       <Flex className="App" direction="column" align="center">
-        <Heading size="2xl">Let&apos;s check the weather now in...</Heading>
+        <Text
+          fontSize="54px"
+          lineHeight="65px"
+          textAlign="center"
+          fontFamily="400"
+        >
+          Let&apos;s check the weather now in...
+        </Text>
         <SearchBar fetchLocations={fetchLocations} />
         {locations &&
           locations.map(
