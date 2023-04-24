@@ -1,4 +1,4 @@
-import { SearchBar } from './SearchBar';
+import { SearchBar } from './components/SearchBar';
 import { WeatherCard } from './components/WeatherCard';
 import { useState } from 'react';
 import { Text, Flex } from '@chakra-ui/react';
@@ -20,6 +20,7 @@ type LocationData = {
 
 function App() {
   const [locations, setLocations] = useState<LocationData[]>([]);
+  const [searchToken, setSearchToken] = useState<string | null>(null);
 
   async function fetchWeather(latitude: string, longitude: string) {
     const baseUrl = 'https://api.open-meteo.com/v1/';
@@ -35,12 +36,12 @@ function App() {
     };
   }
 
-  async function fetchLocations(name: string) {
+  async function fetchLocations() {
     setLocations([]);
 
-    if (name.length > 2) {
+    if (searchToken && searchToken.length > 2) {
       const baseUrl = 'https://geocoding-api.open-meteo.com/v1/';
-      const response = await fetch(`${baseUrl}search?name=${name}`);
+      const response = await fetch(`${baseUrl}search?name=${searchToken}`);
       const data = await response.json();
 
       const locations: LocationData[] = await Promise.all(
@@ -70,6 +71,10 @@ function App() {
     }
   }
 
+  function updateSearchToken(token: string | null) {
+    setSearchToken(token);
+  }
+
   return (
     <>
       <Header />
@@ -80,9 +85,13 @@ function App() {
           textAlign="center"
           fontFamily="400"
         >
-          Let&apos;s check the weather now in...
+          Let&apos;s check the weather now in {searchToken ?? '...'}
         </Text>
-        <SearchBar fetchLocations={fetchLocations} />
+        <SearchBar
+          fetchLocations={fetchLocations}
+          updateLocation={updateSearchToken}
+          location={searchToken}
+        />
         {locations &&
           locations.map(
             ({ name, country, latitude, longitude, weather }: LocationData) => (

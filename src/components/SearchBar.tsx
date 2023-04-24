@@ -10,33 +10,37 @@ import {
   InputRightElement,
   Link,
 } from '@chakra-ui/react';
-import mapIcon from './assets/map-icon.png';
+import mapIcon from '../assets/map-icon.png';
 import { CloseIcon, WarningIcon, Search2Icon } from '@chakra-ui/icons';
 
 type SearchBarProps = {
-  fetchLocations: (a: string) => void;
+  fetchLocations: () => void;
+  updateLocation: (location: string | null) => void;
+  location: string | null;
 };
 
-export function SearchBar({ fetchLocations }: SearchBarProps) {
-  const [searchToken, setSearchToken] = useState<string>('');
-
+export function SearchBar({
+  fetchLocations,
+  updateLocation,
+  location,
+}: SearchBarProps) {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchToken(e.target.value);
+    updateLocation(e.target.value);
   }
 
   function handleInputEnter(event: React.KeyboardEvent) {
     if (event.key === 'Enter') {
-      fetchLocations(searchToken);
+      fetchLocations();
     }
   }
 
   function handleSearchButtonClick() {
-    fetchLocations(searchToken);
+    fetchLocations();
   }
 
   function handleInputClear() {
-    setSearchToken('');
-    fetchLocations('');
+    updateLocation(null);
+    fetchLocations();
   }
 
   return (
@@ -48,7 +52,7 @@ export function SearchBar({ fetchLocations }: SearchBarProps) {
           </InputLeftElement>
           <Input
             type="text"
-            value={searchToken}
+            value={location ?? ''}
             id="search"
             placeholder="City"
             onChange={handleChange}
