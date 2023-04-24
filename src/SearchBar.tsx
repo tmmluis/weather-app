@@ -8,6 +8,7 @@ import {
   Image,
   InputLeftElement,
   InputRightElement,
+  Link,
 } from '@chakra-ui/react';
 import mapIcon from './assets/map-icon.png';
 import { CloseIcon, WarningIcon, Search2Icon } from '@chakra-ui/icons';
@@ -17,22 +18,25 @@ type SearchBarProps = {
 };
 
 export function SearchBar({ fetchLocations }: SearchBarProps) {
-  const [value, setValue] = useState<string>('');
+  const [searchToken, setSearchToken] = useState<string>('');
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setValue(e.target.value);
+    setSearchToken(e.target.value);
   }
 
-  function handleEnter(event: React.KeyboardEvent) {
-    if (event.key === 'Enter' && value.length > 2) {
-      fetchLocations(value);
+  function handleInputEnter(event: React.KeyboardEvent) {
+    if (event.key === 'Enter') {
+      fetchLocations(searchToken);
     }
   }
 
-  function handleClick() {
-    if (value.length > 2) {
-      fetchLocations(value);
-    }
+  function handleSearchButtonClick() {
+    fetchLocations(searchToken);
+  }
+
+  function handleInputClear() {
+    setSearchToken('');
+    fetchLocations('');
   }
 
   return (
@@ -44,22 +48,24 @@ export function SearchBar({ fetchLocations }: SearchBarProps) {
           </InputLeftElement>
           <Input
             type="text"
-            value={value}
+            value={searchToken}
             id="search"
             placeholder="City"
             onChange={handleChange}
-            onKeyDown={handleEnter}
+            onKeyDown={handleInputEnter}
             fontSize="36px"
             width="xl"
             pl="68px"
           />
-          <InputRightElement pointerEvents="none">
-            <CloseIcon />
+          <InputRightElement>
+            <Link>
+              <CloseIcon onClick={handleInputClear} />
+            </Link>
           </InputRightElement>
         </InputGroup>
       </Box>
       <Button
-        onClick={handleClick}
+        onClick={handleSearchButtonClick}
         variant="solid"
         bg="blue.400"
         color="white"

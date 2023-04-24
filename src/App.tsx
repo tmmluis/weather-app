@@ -38,34 +38,36 @@ function App() {
   async function fetchLocations(name: string) {
     setLocations([]);
 
-    const baseUrl = 'https://geocoding-api.open-meteo.com/v1/';
-    const response = await fetch(`${baseUrl}search?name=${name}`);
-    const data = await response.json();
+    if (name.length > 2) {
+      const baseUrl = 'https://geocoding-api.open-meteo.com/v1/';
+      const response = await fetch(`${baseUrl}search?name=${name}`);
+      const data = await response.json();
 
-    const locations: LocationData[] = await Promise.all(
-      data.results.map(
-        async (location: {
-          latitude: string;
-          longitude: string;
-          name: string;
-          country: string;
-        }) => {
-          const weatherData = await fetchWeather(
-            location.latitude,
-            location.longitude
-          );
-          return {
-            name: location.name,
-            country: location.country,
-            latitude: location.latitude,
-            longitude: location.longitude,
-            weather: weatherData,
-          };
-        }
-      )
-    );
+      const locations: LocationData[] = await Promise.all(
+        data.results.map(
+          async (location: {
+            latitude: string;
+            longitude: string;
+            name: string;
+            country: string;
+          }) => {
+            const weatherData = await fetchWeather(
+              location.latitude,
+              location.longitude
+            );
+            return {
+              name: location.name,
+              country: location.country,
+              latitude: location.latitude,
+              longitude: location.longitude,
+              weather: weatherData,
+            };
+          }
+        )
+      );
 
-    setLocations(locations);
+      setLocations(locations);
+    }
   }
 
   return (
