@@ -51,6 +51,7 @@ export function SearchBar({ fetchLocations }: SearchBarProps) {
             onKeyDown={handleEnter}
             fontSize="36px"
             width="xl"
+            pl="68px"
           />
           <InputRightElement pointerEvents="none">
             <CloseIcon />
