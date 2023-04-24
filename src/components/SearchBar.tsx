@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Input,
   Box,
@@ -11,11 +10,11 @@ import {
   Link,
 } from '@chakra-ui/react';
 import mapIcon from '../assets/map-icon.png';
-import { CloseIcon, WarningIcon, Search2Icon } from '@chakra-ui/icons';
+import { CloseIcon, Search2Icon } from '@chakra-ui/icons';
 
 type SearchBarProps = {
   fetchLocations: () => void;
-  updateLocation: (location: string | null) => void;
+  updateLocation: (location: string) => void;
   location: string | null;
 };
 
@@ -39,8 +38,7 @@ export function SearchBar({
   }
 
   function handleInputClear() {
-    updateLocation(null);
-    fetchLocations();
+    updateLocation('');
   }
 
   return (

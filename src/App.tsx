@@ -3,6 +3,7 @@ import { WeatherCard } from './components/WeatherCard';
 import { useState } from 'react';
 import { Text, Flex } from '@chakra-ui/react';
 import { Header } from './components/Header';
+import { SearchHeading } from './components/SearchHeading';
 
 type WeatherData = {
   temperature: string;
@@ -20,7 +21,7 @@ type LocationData = {
 
 function App() {
   const [locations, setLocations] = useState<LocationData[]>([]);
-  const [searchToken, setSearchToken] = useState<string | null>(null);
+  const [searchToken, setSearchToken] = useState<string>('');
 
   async function fetchWeather(latitude: string, longitude: string) {
     const baseUrl = 'https://api.open-meteo.com/v1/';
@@ -71,8 +72,12 @@ function App() {
     }
   }
 
-  function updateSearchToken(token: string | null) {
+  function updateSearchToken(token: string) {
     setSearchToken(token);
+
+    if (token === '') {
+      setLocations([]);
+    }
   }
 
   return (
@@ -85,7 +90,7 @@ function App() {
           textAlign="center"
           fontFamily="400"
         >
-          Let&apos;s check the weather now in {searchToken ?? '...'}
+          <SearchHeading location={searchToken} />
         </Text>
         <SearchBar
           fetchLocations={fetchLocations}
