@@ -36,9 +36,9 @@ export function SearchBar({ fetchLocations }: SearchBarProps) {
   }
 
   return (
-    <Flex width="668px" height="78px" alignItems="end" gap="24px">
+    <Flex width="3xl" height="78px" alignItems="end" gap="24px">
       <Box>
-        <InputGroup variant="flushed" width="437px">
+        <InputGroup variant="flushed" size="lg">
           <InputLeftElement pointerEvents="none">
             <Image src={mapIcon} boxSize="30px" />
           </InputLeftElement>
@@ -50,6 +50,7 @@ export function SearchBar({ fetchLocations }: SearchBarProps) {
             onChange={handleChange}
             onKeyDown={handleEnter}
             fontSize="36px"
+            width="xl"
           />
           <InputRightElement pointerEvents="none">
             <CloseIcon />
@@ -63,7 +64,7 @@ export function SearchBar({ fetchLocations }: SearchBarProps) {
         color="white"
         leftIcon={<Search2Icon fontSize="20px" mr="16px" />}
         borderRadius="full"
-        width="207px"
+        width="md"
         height="50px"
         fontSize="24px"
       >
