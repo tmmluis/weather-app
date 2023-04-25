@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react';
 import { LocationData } from '../App';
 import { WeatherCard } from './WeatherCard';
 
@@ -7,7 +8,7 @@ type LocationsListProps = {
 
 export function LocationsList({ locations }: LocationsListProps) {
   return (
-    <>
+    <Box zIndex={1} pt={8}>
       {locations.map(
         ({ name, country, latitude, longitude, weather }: LocationData) => (
           <WeatherCard
@@ -20,6 +21,6 @@ export function LocationsList({ locations }: LocationsListProps) {
           />
         )
       )}
-    </>
+    </Box>
   );
 }

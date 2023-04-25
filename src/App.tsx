@@ -4,6 +4,7 @@ import { Flex } from '@chakra-ui/react';
 import { Header } from './components/Header';
 import { SearchHeading } from './components/SearchHeading';
 import { LocationsList } from './components/LocationsList';
+import { Background } from './components/Background';
 
 type WeatherData = {
   temperature: string;
@@ -20,7 +21,7 @@ export type LocationData = {
 };
 
 function App() {
-  const [locations, setLocations] = useState<LocationData[]>([]);
+  const [locations, setLocations] = useState<LocationData[] | null>(null);
   const [searchToken, setSearchToken] = useState<string>('');
 
   async function fetchWeather(latitude: string, longitude: string) {
@@ -38,7 +39,7 @@ function App() {
   }
 
   async function fetchLocations() {
-    setLocations([]);
+    setLocations(null);
 
     if (searchToken && searchToken.length > 2) {
       const baseUrl = 'https://geocoding-api.open-meteo.com/v1/';
@@ -76,7 +77,7 @@ function App() {
     setSearchToken(token);
 
     if (token === '') {
-      setLocations([]);
+      setLocations(null);
     }
   }
 
@@ -92,6 +93,7 @@ function App() {
         />
         {locations && <LocationsList locations={locations} />}
       </Flex>
+      <Background isPhoto={!locations} />
     </>
   );
 }
