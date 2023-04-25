@@ -1,9 +1,9 @@
 import { SearchBar } from './components/SearchBar';
-import { WeatherCard } from './components/WeatherCard';
 import { useState } from 'react';
-import { Text, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { Header } from './components/Header';
 import { SearchHeading } from './components/SearchHeading';
+import { LocationsList } from './components/LocationsList';
 
 type WeatherData = {
   temperature: string;
@@ -11,7 +11,7 @@ type WeatherData = {
   weatherCode: string;
 };
 
-type LocationData = {
+export type LocationData = {
   name: string;
   country: string;
   latitude: string;
@@ -84,32 +84,13 @@ function App() {
     <>
       <Header />
       <Flex className="App" direction="column" align="center">
-        <Text
-          fontSize="54px"
-          lineHeight="65px"
-          textAlign="center"
-          fontFamily="400"
-        >
-          <SearchHeading location={searchToken} />
-        </Text>
+        <SearchHeading location={searchToken} />
         <SearchBar
           fetchLocations={fetchLocations}
           updateLocation={updateSearchToken}
           location={searchToken}
         />
-        {locations &&
-          locations.map(
-            ({ name, country, latitude, longitude, weather }: LocationData) => (
-              <WeatherCard
-                name={name}
-                country={country}
-                temperature={weather.temperature}
-                windSpeed={weather.windSpeed}
-                weatherCode={weather.weatherCode}
-                key={'' + latitude + longitude}
-              />
-            )
-          )}
+        {locations && <LocationsList locations={locations} />}
       </Flex>
     </>
   );
