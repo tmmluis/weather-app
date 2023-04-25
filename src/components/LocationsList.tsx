@@ -9,18 +9,12 @@ type LocationsListProps = {
 export function LocationsList({ locations }: LocationsListProps) {
   return (
     <Box zIndex={1} pt={8}>
-      {locations.map(
-        ({ name, country, latitude, longitude, weather }: LocationData) => (
-          <WeatherCard
-            name={name}
-            country={country}
-            temperature={weather.temperature}
-            windSpeed={weather.windSpeed}
-            weatherCode={weather.weatherCode}
-            key={'' + latitude + longitude}
-          />
-        )
-      )}
+      {locations.map((location: LocationData) => (
+        <WeatherCard
+          location={location}
+          key={'' + location.latitude + location.longitude}
+        />
+      ))}
     </Box>
   );
 }

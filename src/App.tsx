@@ -15,6 +15,7 @@ type WeatherData = {
 export type LocationData = {
   name: string;
   country: string;
+  admin1: string;
   latitude: string;
   longitude: string;
   weather: WeatherData;
@@ -47,26 +48,20 @@ function App() {
       const data = await response.json();
 
       const locations: LocationData[] = await Promise.all(
-        data.results.map(
-          async (location: {
-            latitude: string;
-            longitude: string;
-            name: string;
-            country: string;
-          }) => {
-            const weatherData = await fetchWeather(
-              location.latitude,
-              location.longitude
-            );
-            return {
-              name: location.name,
-              country: location.country,
-              latitude: location.latitude,
-              longitude: location.longitude,
-              weather: weatherData,
-            };
-          }
-        )
+        data.results.map(async (location: LocationData) => {
+          const weatherData = await fetchWeather(
+            location.latitude,
+            location.longitude
+          );
+          return {
+            name: location.name,
+            country: location.country,
+            admin1: location.admin1,
+            latitude: location.latitude,
+            longitude: location.longitude,
+            weather: weatherData,
+          } as LocationData;
+        })
       );
 
       setLocations(locations);
