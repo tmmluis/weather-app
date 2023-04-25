@@ -1,7 +1,7 @@
 import { Box, Image, Flex } from '@chakra-ui/react';
 import { getWeatherFromCode } from '../util/weatherCodes';
-import thermoLogo from '../assets/1530373_weather_forecast_temperature_thermometer.png';
-import windLogo from '../assets/8666815_wind_windy_weather_icon.png';
+import thermoLogo from '../assets/weather_thermometer.png';
+import windLogo from '../assets/weather_wind.png';
 
 type Props = {
   name: string;
