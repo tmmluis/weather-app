@@ -6,51 +6,56 @@ type CardInfoProps = {
   description: string;
   temperature: string;
   windSpeed: string;
-  logo: string;
+  weatherLogo: string;
 };
 
 export function CardInfo({
   description,
   temperature,
   windSpeed,
-  logo,
+  weatherLogo,
 }: CardInfoProps) {
   return (
-    <Flex>
-      <Image src={logo} alt={description} />
-      <Box>
-        <Text fontWeight="400" fontSize="24px" color="gray.500" pt="6px">
-          {description}
-        </Text>
-        <Flex alignItems="center">
-          <Image src={thermoLogo} alt="Temperature" boxSize="42px" />
-          <Text
-            fontWeight="400"
-            fontSize="54px"
-            color="gray.900"
-            fontFamily="Roboto, sans-serif"
-          >
-            {temperature}&deg;
+    <Flex pt="16px" gap="8px">
+      <Image src={weatherLogo} alt={description} boxSize="142px" />
+      <Flex
+        flexDir="column"
+        justifyContent="space-between"
+        alignItems="flex-start"
+        gap="8px"
+        height="142px"
+        width="554px"
+      >
+        <Flex flexDir="column" alignItems="flex-start" gap="4px" h="106px">
+          <Text fontWeight="400" fontSize="24px" color="gray.500" pl="8px">
+            {description}
           </Text>
+          <Flex alignItems="center" gap="8px">
+            <Image src={thermoLogo} alt="Temperature" boxSize="42px" />
+            <Text
+              fontWeight="400"
+              fontSize="54px"
+              color="gray.900"
+              fontFamily="Roboto, sans-serif"
+              lineHeight="63px"
+            >
+              {temperature}&deg;
+            </Text>
+          </Flex>
         </Flex>
-        <Flex alignItems="center">
-          <Image
-            src={windLogo}
-            alt="Wind speed"
-            boxSize="24px"
-            ml="6px"
-            mt="4px"
-          />
+        <Flex alignItems="flex-start" gap="8px" pl="8px">
+          <Image src={windLogo} alt="Wind speed" boxSize="24px" />
           <Text
             fontWeight="400"
             fontSize="24px"
             color="gray.900"
             fontFamily="Roboto, sans-serif"
+            lineHeight="28px"
           >
             {windSpeed} Km/h
           </Text>
         </Flex>
-      </Box>
+      </Flex>
     </Flex>
   );
 }

@@ -9,9 +9,9 @@ type CardLocationProps = {
 
 export function CardLocation({ name, country, state }: CardLocationProps) {
   return (
-    <Flex alignItems="center">
-      <Image src={mapIcon} boxSize="20px" />
-      <Text display="inline" fontWeight="700" fontSize="24px" ml="10px">
+    <Flex alignItems="center" mb="12px">
+      <Image src={mapIcon} boxSize="24px" />
+      <Text display="inline" fontWeight="700" fontSize="24px" ml="8px">
         {name}
       </Text>
       <Text display="inline" fontSize="24px" textOverflow="ellipsis">

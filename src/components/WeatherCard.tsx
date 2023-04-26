@@ -1,4 +1,4 @@
-import { Stack, Divider } from '@chakra-ui/react';
+import { Flex, Divider } from '@chakra-ui/react';
 import { getWeatherFromCode } from '../util/weatherCodes';
 import { LocationData } from '../App';
 import { CardLocation } from './CardLocation';
@@ -15,12 +15,12 @@ export function WeatherCard({ location }: WeatherCardProps) {
   );
 
   return (
-    <Stack
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      width="3xl"
-      height="2xs"
+    <Flex
+      flexDir="column"
+      alignItems="flex-start"
+      border="1px solid #E2E8F0"
+      width="752px"
+      height="263px"
       mb="32px"
       p="24px"
     >
@@ -30,8 +30,8 @@ export function WeatherCard({ location }: WeatherCardProps) {
         description={weatherLabel}
         temperature={weather.temperature}
         windSpeed={weather.windSpeed}
-        logo={weatherLogo}
+        weatherLogo={weatherLogo}
       />
-    </Stack>
+    </Flex>
   );
 }
