@@ -76,9 +76,14 @@ function App() {
     }
   }
 
+  const handleLogoClick = () => {
+    setLocations(null);
+    setSearchToken('');
+  };
+
   return (
     <>
-      <Header />
+      <Header handleClick={handleLogoClick} />
       <Flex className="App" direction="column" align="center">
         <SearchHeading location={searchToken} />
         <SearchBar
