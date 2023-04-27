@@ -1,6 +1,11 @@
 import { Flex, Text } from '@chakra-ui/react';
 
-export function Tag() {
+type TagProps = {
+  city: string;
+  country: string;
+};
+
+export function Tag({ city, country }: TagProps) {
   return (
     <Flex
       alignItems="center"
@@ -12,10 +17,10 @@ export function Tag() {
       borderRadius="0px 20px 0px 0px"
     >
       <Text display="inline" fontWeight="700" fontSize="16px" color="#FFFFFF">
-        Lisbon
+        {city},
       </Text>
       <Text display="inline" fontWeight="400" fontSize="16px" color="#FFFFFF">
-        , Portugal
+        {country}
       </Text>
     </Flex>
   );
