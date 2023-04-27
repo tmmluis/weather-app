@@ -9,7 +9,7 @@ import {
   InputRightElement,
   Link,
 } from '@chakra-ui/react';
-import mapIcon from '../assets/map-icon.png';
+import mapIcon from '../assets/map-icon.svg';
 import { CloseIcon, Search2Icon } from '@chakra-ui/icons';
 
 type SearchBarProps = {

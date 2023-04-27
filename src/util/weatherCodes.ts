@@ -1,13 +1,13 @@
-import sunny from '../assets/weather_sunny.png';
-import partiallyCloudy from '../assets/weather_partly_cloudy.png';
-import overcast from '../assets/weather_overcast.png';
-import fog from '../assets/weather_fog.png';
-import cloudyCold from '../assets/weather_snow.png';
-import lightRain from '../assets/weather_light_rain.png';
-import moderateRain from '../assets/weather_moderate_rain.png';
-import heavyRain from '../assets/weather_heavy_rain.png';
-import snow from '../assets/weather_snow.png';
-import thunderstorms from '../assets/weather_thunderstorm.png';
+import sunny from '../assets/weather_sunny.svg';
+import partiallyCloudy from '../assets/weather_partly_cloudy.svg';
+import overcast from '../assets/weather_overcast.svg';
+import fog from '../assets/weather_fog.svg';
+import cloudyCold from '../assets/weather_snow.svg';
+import lightRain from '../assets/weather_light_rain.svg';
+import moderateRain from '../assets/weather_moderate_rain.svg';
+import heavyRain from '../assets/weather_heavy_rain.svg';
+import snow from '../assets/weather_snow.svg';
+import thunderstorms from '../assets/weather_thunderstorm.svg';
 
 type WeatherInfo = {
   label: string;

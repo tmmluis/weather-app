@@ -1,6 +1,6 @@
 import { Text, Image, Flex } from '@chakra-ui/react';
-import thermoLogo from '../assets/weather_thermometer.png';
-import windLogo from '../assets/weather_wind.png';
+import thermoLogo from '../assets/weather_thermometer.svg';
+import windLogo from '../assets/weather_wind.svg';
 
 type CardInfoProps = {
   description: string;

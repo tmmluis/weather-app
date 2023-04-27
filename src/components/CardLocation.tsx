@@ -1,5 +1,5 @@
 import { Flex, Text, Image } from '@chakra-ui/react';
-import mapIcon from '../assets/map-icon.png';
+import mapIcon from '../assets/map-icon.svg';
 
 type CardLocationProps = {
   name: string;

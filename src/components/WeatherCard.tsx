@@ -23,6 +23,8 @@ export function WeatherCard({ location }: WeatherCardProps) {
       height="263px"
       mb="32px"
       p="24px"
+      backgroundColor="white"
+      boxShadow="md"
     >
       <CardLocation {...{ name, country, state }} />
       <Divider borderBottom="2px" borderBottomColor="gray.200" />
