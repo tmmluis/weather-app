@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Flex, Box, Image } from '@chakra-ui/react';
 import lisbon from '../assets/lisbon.png';
 
 type BackgroundProps = {
@@ -7,14 +7,12 @@ type BackgroundProps = {
 
 export function Background({ isPhoto }: BackgroundProps) {
   return (
-    <Box
-      pos="fixed"
-      bottom="0"
-      w="100%"
-      height="50%"
-      backgroundImage={isPhoto ? lisbon : 'linear-gradient(#FFFFFF, #EBF8FF)'}
-      backgroundSize="cover"
-      backgroundPosition="center"
-    />
+    <Flex pos="fixed" bottom="0" w="100%" height="55%" zIndex="-1">
+      {isPhoto ? (
+        <Image src={lisbon} flexGrow="1" objectFit="cover" />
+      ) : (
+        <Box flexGrow="1" backgroundColor="blue.50" />
+      )}
+    </Flex>
   );
 }
