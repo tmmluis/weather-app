@@ -1,4 +1,4 @@
-import { Box, Text, Image, Flex } from '@chakra-ui/react';
+import { Text, Image, Flex } from '@chakra-ui/react';
 import thermoLogo from '../assets/weather_thermometer.png';
 import windLogo from '../assets/weather_wind.png';
 
