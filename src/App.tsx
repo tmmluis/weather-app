@@ -1,5 +1,5 @@
 import { SearchBar } from './components/SearchBar';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Flex } from '@chakra-ui/react';
 import { Header } from './components/Header';
 import { SearchHeading } from './components/SearchHeading';
@@ -24,6 +24,7 @@ export type LocationData = {
 function App() {
   const [locations, setLocations] = useState<LocationData[] | null>(null);
   const [searchToken, setSearchToken] = useState<string>('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   async function fetchWeather(latitude: string, longitude: string) {
     const baseUrl = 'https://api.open-meteo.com/v1/';
@@ -73,12 +74,14 @@ function App() {
 
     if (token === '') {
       setLocations(null);
+      inputRef?.current?.focus();
     }
   }
 
   const handleLogoClick = () => {
     setLocations(null);
     setSearchToken('');
+    inputRef?.current?.focus();
   };
 
   return (
@@ -90,6 +93,7 @@ function App() {
           fetchLocations={fetchLocations}
           updateLocation={updateSearchToken}
           location={searchToken}
+          ref={inputRef}
         />
         {locations && <LocationsList locations={locations} />}
       </Flex>

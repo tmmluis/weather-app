@@ -10,7 +10,7 @@ type CardLocationProps = {
 export function CardLocation({ name, country, state }: CardLocationProps) {
   return (
     <Flex alignItems="center" mb="12px">
-      <Image src={mapIcon} boxSize="24px" />
+      <Image src={mapIcon} alt="" boxSize="24px" />
       <Text display="inline" fontWeight="700" fontSize="24px" ml="8px">
         {name}
       </Text>
