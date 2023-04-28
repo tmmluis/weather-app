@@ -8,19 +8,24 @@ import {
   InputLeftElement,
   InputRightElement,
   Link,
+  Text,
 } from '@chakra-ui/react';
 import mapIcon from '../assets/map-icon.svg';
-import { CloseIcon, Search2Icon } from '@chakra-ui/icons';
+import { CloseIcon, Search2Icon, WarningIcon } from '@chakra-ui/icons';
 import { forwardRef } from 'react';
 
 type SearchBarProps = {
   fetchLocations: () => void;
   updateLocation: (location: string) => void;
   location: string | null;
+  isValid: boolean;
 };
 
 export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
-  ({ fetchLocations, updateLocation, location }: SearchBarProps, ref) => {
+  (
+    { fetchLocations, updateLocation, location, isValid }: SearchBarProps,
+    ref
+  ) => {
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
       updateLocation(e.target.value);
     }
@@ -40,11 +45,11 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
     }
 
     return (
-      <Flex width="3xl" height="78px" alignItems="end" gap="24px">
-        <Box>
-          <InputGroup variant="flushed" size="lg">
+      <Box>
+        <Flex height="78px" alignItems="end" gap="24px">
+          <InputGroup variant="flushed" width="563px">
             <InputLeftElement pointerEvents="none">
-              <Image src={mapIcon} alt="Search for a location" boxSize="30px" />
+              <Image src={mapIcon} alt="Search for a location" boxSize="40px" />
             </InputLeftElement>
             <Input
               type="text"
@@ -53,32 +58,58 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
               placeholder="City"
               onChange={handleChange}
               onKeyDown={handleInputEnter}
+              height="50px"
               fontSize="36px"
-              width="xl"
-              pl="68px"
+              padding="0 0 12px 64px"
               ref={ref}
+              isInvalid={!isValid}
+              focusBorderColor={isValid ? 'blue.400' : 'red.400'}
             />
             <InputRightElement>
-              <Link>
-                <CloseIcon onClick={handleInputClear} />
-              </Link>
+              {isValid ? (
+                <Link>
+                  <CloseIcon onClick={handleInputClear} boxSize="21px" />
+                </Link>
+              ) : (
+                <WarningIcon boxSize="33px" color="red.400" />
+              )}
             </InputRightElement>
           </InputGroup>
-        </Box>
-        <Button
-          onClick={handleSearchButtonClick}
-          variant="solid"
-          bg="blue.400"
-          color="white"
-          leftIcon={<Search2Icon fontSize="20px" mr="16px" />}
-          borderRadius="full"
-          width="md"
-          height="50px"
-          fontSize="24px"
-        >
-          Search
-        </Button>
-      </Flex>
+          <Button
+            onClick={handleSearchButtonClick}
+            variant="solid"
+            bg="blue.400"
+            color="white"
+            leftIcon={<Search2Icon fontSize="20px" mr="8px" />}
+            borderRadius="full"
+            width="165px"
+            height="50px"
+            fontSize="24px"
+          >
+            Search
+          </Button>
+        </Flex>
+        {!isValid && (
+          <Box mt="40px">
+            <Text
+              fontWeight="400"
+              fontSize="24px"
+              color="gray.900"
+              fontFamily={"'Roboto', sans-serif"}
+            >
+              There are no results matching your search.
+            </Text>
+            <Text
+              fontWeight="300"
+              fontSize="24px"
+              color="gray.900"
+              fontFamily={"'Roboto', sans-serif"}
+            >
+              Please try a different city.
+            </Text>
+          </Box>
+        )}
+      </Box>
     );
   }
 );
