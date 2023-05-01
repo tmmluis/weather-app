@@ -6,7 +6,13 @@ type SearchHeadingProps = {
 
 export function SearchHeading({ location }: SearchHeadingProps) {
   return (
-    <Text fontSize="54px" lineHeight="65px" textAlign="center" fontFamily="400">
+    <Text
+      fontSize="54px"
+      lineHeight="65px"
+      textAlign="start"
+      fontFamily="400"
+      marginLeft={{ base: '32px', lg: '0px' }}
+    >
       <span>
         Let&apos;s check the weather now in{' '}
         {location === '' ? (
