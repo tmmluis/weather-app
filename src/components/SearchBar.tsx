@@ -46,8 +46,12 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
 
     return (
       <Box>
-        <Flex height="78px" alignItems="end" gap="24px">
-          <InputGroup variant="flushed" width="563px">
+        <Box height="78px" alignItems="end" gap="24px" display={{ lg: 'flex' }}>
+          <InputGroup
+            variant="flushed"
+            width={{ sm: '432px', md: '704px', lg: '485px', xl: '563px' }}
+            marginTop={{ sm: '32px', md: '40px', lg: '0px' }}
+          >
             <InputLeftElement pointerEvents="none">
               <Image src={mapIcon} alt="Search for a location" boxSize="40px" />
             </InputLeftElement>
@@ -82,13 +86,14 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             color="white"
             leftIcon={<Search2Icon fontSize="20px" mr="8px" />}
             borderRadius="full"
-            width="165px"
+            width={{ sm: '432px', md: '704px', lg: '165px' }}
             height="50px"
             fontSize="24px"
+            marginTop={{ sm: '40px', lg: '0px' }}
           >
             Search
           </Button>
-        </Flex>
+        </Box>
         {!isValid && (
           <Box mt="40px">
             <Text
