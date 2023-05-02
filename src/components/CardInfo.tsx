@@ -17,40 +17,56 @@ export function CardInfo({
 }: CardInfoProps) {
   return (
     <Flex pt="16px" gap="8px">
-      <Image src={weatherLogo} alt={description} boxSize="142px" />
+      <Image
+        src={weatherLogo}
+        alt={description}
+        boxSize={{ base: '100px', md: '142px' }}
+      />
       <Flex
         flexDir="column"
         justifyContent="space-between"
         alignItems="flex-start"
         gap="8px"
-        height="142px"
         width="554px"
       >
-        <Flex flexDir="column" alignItems="flex-start" gap="4px" h="106px">
-          <Text fontWeight="400" fontSize="24px" color="gray.500" pl="8px">
+        <Flex flexDir="column" alignItems="flex-start" gap="4px">
+          <Text
+            fontWeight="400"
+            fontSize={{ base: '16px', md: '24px' }}
+            color="gray.500"
+            pl="8px"
+          >
             {description}
           </Text>
           <Flex alignItems="center" gap="8px">
-            <Image src={thermoLogo} alt="Temperature" boxSize="42px" />
+            <Image
+              src={thermoLogo}
+              alt="Temperature"
+              boxSize={{ base: '32px', md: '42px' }}
+            />
             <Text
               fontWeight="400"
-              fontSize="54px"
+              fontSize={{ base: '36px', md: '54px' }}
               color="gray.900"
               fontFamily="Roboto, sans-serif"
-              lineHeight="63px"
+              lineHeight={{ base: '42px', md: '63px' }}
             >
               {temperature}&deg;
             </Text>
           </Flex>
         </Flex>
         <Flex alignItems="flex-start" gap="8px" pl="8px">
-          <Image src={windLogo} alt="Wind speed" boxSize="24px" />
+          <Image
+            src={windLogo}
+            alt="Wind speed"
+            boxSize={{ base: '20px', md: '24px' }}
+          />
           <Text
             fontWeight="400"
-            fontSize="24px"
+            fontSize={{ base: '16px', md: '24px' }}
             color="gray.900"
             fontFamily="Roboto, sans-serif"
-            lineHeight="28px"
+            lineHeight={{ base: '18px', md: '28px' }}
           >
             {windSpeed} Km/h
           </Text>

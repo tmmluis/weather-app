@@ -19,8 +19,14 @@ export function WeatherCard({ location }: WeatherCardProps) {
       flexDir="column"
       alignItems="flex-start"
       border="1px solid #E2E8F0"
-      width="752px"
-      height="263px"
+      width={{
+        base: '342px',
+        sm: '432px',
+        md: '704px',
+        lg: '928px',
+        xl: '752px',
+      }}
+      height={{ base: '222px', md: '263px' }}
       mb="32px"
       p="24px"
       backgroundColor="white"

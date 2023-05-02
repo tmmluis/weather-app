@@ -1,4 +1,4 @@
-import { Flex, Text, Image } from '@chakra-ui/react';
+import { Box, Text, Image } from '@chakra-ui/react';
 import mapIcon from '../assets/map-icon.svg';
 
 type CardLocationProps = {
@@ -9,14 +9,20 @@ type CardLocationProps = {
 
 export function CardLocation({ name, country, state }: CardLocationProps) {
   return (
-    <Flex alignItems="center" mb="12px">
-      <Image src={mapIcon} alt="" boxSize="24px" />
+    <Box
+      alignItems="center"
+      mb="12px"
+      overflow="hidden"
+      whiteSpace="nowrap"
+      textOverflow="ellipsis"
+    >
+      <Image src={mapIcon} alt="" boxSize="24px" display="inline" />
       <Text display="inline" fontWeight="700" fontSize="24px" ml="8px">
         {name}
       </Text>
-      <Text display="inline" fontSize="24px" textOverflow="ellipsis">
+      <Text display="inline" fontSize="24px">
         , {country}, {state}
       </Text>
-    </Flex>
+    </Box>
   );
 }
