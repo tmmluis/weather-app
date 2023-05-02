@@ -2,7 +2,6 @@ import {
   Input,
   Box,
   Button,
-  Flex,
   InputGroup,
   Image,
   InputLeftElement,

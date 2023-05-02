@@ -11,7 +11,7 @@ export function SearchHeading({ location }: SearchHeadingProps) {
       lineHeight={{ base: '43px', sm: '65px' }}
       textAlign="start"
       fontFamily="400"
-      marginLeft={{ base: '32px', lg: '0px' }}
+      margin={{ base: '0px 24px', md: '0px 32px', lg: '0px' }}
     >
       <span>
         Let&apos;s check the weather now in{' '}
