@@ -49,11 +49,21 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         <Box height="78px" alignItems="end" gap="24px" display={{ lg: 'flex' }}>
           <InputGroup
             variant="flushed"
-            width={{ sm: '432px', md: '704px', lg: '485px', xl: '563px' }}
-            marginTop={{ sm: '32px', md: '40px', lg: '0px' }}
+            width={{
+              base: '342px',
+              sm: '432px',
+              md: '704px',
+              lg: '485px',
+              xl: '563px',
+            }}
+            marginTop={{ base: '40px', sm: '32px', md: '40px', lg: '0px' }}
           >
             <InputLeftElement pointerEvents="none">
-              <Image src={mapIcon} alt="Search for a location" boxSize="40px" />
+              <Image
+                src={mapIcon}
+                alt="Search for a location"
+                boxSize={{ base: '24px', sm: '40px' }}
+              />
             </InputLeftElement>
             <Input
               type="text"
@@ -63,7 +73,7 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
               onChange={handleChange}
               onKeyDown={handleInputEnter}
               height="50px"
-              fontSize="36px"
+              fontSize={{ base: '24px', sm: '36px' }}
               padding="0 0 12px 64px"
               ref={ref}
               isInvalid={!isValid}
@@ -72,7 +82,10 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             <InputRightElement>
               {isValid ? (
                 <Link>
-                  <CloseIcon onClick={handleInputClear} boxSize="21px" />
+                  <CloseIcon
+                    onClick={handleInputClear}
+                    boxSize={{ base: '11px', sm: '21px' }}
+                  />
                 </Link>
               ) : (
                 <WarningIcon boxSize="33px" color="red.400" />
@@ -86,10 +99,10 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             color="white"
             leftIcon={<Search2Icon fontSize="20px" mr="8px" />}
             borderRadius="full"
-            width={{ sm: '432px', md: '704px', lg: '165px' }}
+            width={{ base: '342px', sm: '432px', md: '704px', lg: '165px' }}
             height="50px"
             fontSize="24px"
-            marginTop={{ sm: '40px', lg: '0px' }}
+            marginTop={{ base: '32px', sm: '40px', lg: '0px' }}
           >
             Search
           </Button>

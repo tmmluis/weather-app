@@ -22,7 +22,13 @@ export function Background({ isPhoto }: BackgroundProps) {
     <Box
       zIndex="-1"
       w="100%"
-      height={{ sm: '497px', md: '554px', lg: '644px', xl: '524px' }}
+      height={{
+        base: '375px',
+        sm: '497px',
+        md: '554px',
+        lg: '644px',
+        xl: '524px',
+      }}
       pos="fixed"
       bottom="0"
     >

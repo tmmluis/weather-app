@@ -7,8 +7,8 @@ type SearchHeadingProps = {
 export function SearchHeading({ location }: SearchHeadingProps) {
   return (
     <Text
-      fontSize="54px"
-      lineHeight="65px"
+      fontSize={{ base: '36px', sm: '54px' }}
+      lineHeight={{ base: '43px', sm: '65px' }}
       textAlign="start"
       fontFamily="400"
       marginLeft={{ base: '32px', lg: '0px' }}
