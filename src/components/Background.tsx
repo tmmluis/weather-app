@@ -23,7 +23,7 @@ export function Background({ isPhoto }: BackgroundProps) {
       zIndex="-1"
       w="100%"
       height={{
-        base: '375px',
+        base: '300px',
         sm: '497px',
         md: '554px',
         lg: '644px',
