@@ -76,6 +76,7 @@ function App() {
 
         setLocations(locations);
         setIsSearchValid(true);
+        inputRef?.current?.blur();
       } else {
         setLocations(null);
         setIsSearchValid(false);
