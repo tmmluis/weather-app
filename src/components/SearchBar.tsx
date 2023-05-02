@@ -45,7 +45,12 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
 
     return (
       <Box>
-        <Box height="78px" alignItems="end" gap="24px" display={{ lg: 'flex' }}>
+        <Box
+          alignItems="end"
+          gap="24px"
+          display={{ lg: 'flex' }}
+          marginTop={{ base: '40px', sm: '32px', lg: '40px' }}
+        >
           <InputGroup
             variant="flushed"
             width={{
@@ -55,7 +60,6 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
               lg: '485px',
               xl: '563px',
             }}
-            marginTop={{ base: '40px', sm: '32px', md: '40px', lg: '0px' }}
           >
             <InputLeftElement pointerEvents="none">
               <Image
