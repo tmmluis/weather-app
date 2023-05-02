@@ -1,4 +1,4 @@
-import { Flex, Spacer, Center, Text } from '@chakra-ui/react';
+import { Flex, Spacer, Center, Text, Box } from '@chakra-ui/react';
 
 type HeaderProps = {
   handleClick: () => void;
@@ -6,11 +6,13 @@ type HeaderProps = {
 
 export function Header({ handleClick }: HeaderProps) {
   const currentDate = new Date(Date.now());
-  const options = { dateStyle: 'full' } as const;
   const currentTime = currentDate.toTimeString().split(' ')[0].slice(0, 5);
+  const options = { dateStyle: 'full' } as const;
+  const formattedDate = currentDate.toLocaleDateString(undefined, options);
+  const [weekDay, date] = formattedDate.split(',');
 
   return (
-    <Flex as="header" p="40px">
+    <Flex as="header" p={{ base: '24px', md: '24px 32px' }} marginBottom="40px">
       <Center as="a" onClick={handleClick} cursor="pointer">
         <Text
           display="inline"
@@ -37,7 +39,8 @@ export function Header({ handleClick }: HeaderProps) {
           color="gray.900"
           fontFamily={"'Roboto', sans-serif"}
         >
-          {currentDate.toLocaleDateString(undefined, options)} | {currentTime}
+          <Box display={{ base: 'none', xl: 'inline' }}>{weekDay},</Box>
+          {date} | {currentTime}
         </Text>
       </Center>
     </Flex>
