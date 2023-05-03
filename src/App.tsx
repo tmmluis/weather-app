@@ -1,11 +1,11 @@
 import { SearchBar } from './components/SearchBar';
 import { useRef, useState } from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Box } from '@chakra-ui/react';
 import { Header } from './components/Header';
 import { SearchHeading } from './components/SearchHeading';
 import { LocationsList } from './components/LocationsList';
 import { Background } from './components/Background';
-import { useWindowDimensions } from './util/useWindowDimensions';
+import './global.css';
 
 type WeatherData = {
   temperature: string;
@@ -26,8 +26,6 @@ function App() {
   const [locations, setLocations] = useState<LocationData[] | null>(null);
   const [searchToken, setSearchToken] = useState<string>('');
   const [isSearchValid, setIsSearchValid] = useState<boolean>(true);
-  const { height } = useWindowDimensions();
-  const displayBackground = height > 675;
 
   const inputRef = useRef<HTMLInputElement>(null);
   const hasLocations = locations != null;
@@ -99,9 +97,14 @@ function App() {
   };
 
   return (
-    <>
+    <Flex direction="column" height="100%">
       <Header handleClick={handleLogoClick} />
-      <Flex className="App" direction="column" align="center">
+      <Flex
+        className="App"
+        direction="column"
+        align="center"
+        marginBottom={{ base: '80px', xl: '160px' }}
+      >
         <SearchHeading location={searchToken} />
         <SearchBar
           fetchLocations={fetchLocations}
@@ -112,8 +115,10 @@ function App() {
         />
         {hasLocations && <LocationsList locations={locations} />}
       </Flex>
-      {displayBackground && <Background isPhoto={!hasLocations} />}
-    </>
+      <Box flexGrow="1">
+        <Background isPhoto={!hasLocations} />
+      </Box>
+    </Flex>
   );
 }
 

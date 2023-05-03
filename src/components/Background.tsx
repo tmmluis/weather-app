@@ -19,22 +19,10 @@ export function Background({ isPhoto }: BackgroundProps) {
   }, [isPhoto]);
 
   return (
-    <Box
-      zIndex="-1"
-      w="100%"
-      height={{
-        base: '300px',
-        sm: '497px',
-        md: '554px',
-        lg: '644px',
-        xl: '524px',
-      }}
-      pos="fixed"
-      bottom="0"
-    >
+    <Box zIndex="-1" height="100%" position="relative">
       {isPhoto ? (
-        <Box key={city.name} className="fade-in">
-          <Flex pos="absolute" w="100%" h="100%">
+        <Box key={city.name} className="fade-in" height="100%">
+          <Flex height="100%">
             <Image src={city.image} flexGrow="1" objectFit="cover" />
           </Flex>
           <Box pos="absolute" bottom="0">
@@ -42,7 +30,7 @@ export function Background({ isPhoto }: BackgroundProps) {
           </Box>
         </Box>
       ) : (
-        <Box backgroundColor="blue.50" h="100%" />
+        <Box backgroundColor="blue.50" height="100%" />
       )}
     </Box>
   );
