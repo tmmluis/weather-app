@@ -110,7 +110,9 @@ function App() {
         <Flex
           direction="column"
           align="center"
-          marginBottom={{ base: '80px', xl: '160px' }}
+          gap={{ base: 8, md: 10 }}
+          marginBottom={{ base: 20, xl: 40 }}
+          width={'100%'}
         >
           <SearchHeading location={searchToken} />
           <SearchBar

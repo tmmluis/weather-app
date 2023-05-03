@@ -44,23 +44,13 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
     }
 
     return (
-      <Box>
+      <Box width={{ base: '100%', lg: 'auto' }}>
         <Box
-          alignItems="end"
-          gap="24px"
+          gap={6}
           display={{ lg: 'flex' }}
-          marginTop={{ base: '40px', sm: '32px', lg: '40px' }}
+          width={{ base: '100%', lg: '690px', xl: '752px' }}
         >
-          <InputGroup
-            variant="flushed"
-            width={{
-              base: '342px',
-              sm: '432px',
-              md: '704px',
-              lg: '485px',
-              xl: '563px',
-            }}
-          >
+          <InputGroup variant="flushed">
             <InputLeftElement pointerEvents="none">
               <Image
                 src={mapIcon}
@@ -101,18 +91,20 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             variant="solid"
             bg="blue.400"
             color="white"
-            leftIcon={<Search2Icon fontSize="20px" mr="8px" />}
+            leftIcon={<Search2Icon fontSize="20px" mr={3} />}
             borderRadius="full"
-            width={{ base: '342px', sm: '432px', md: '704px', lg: '165px' }}
             height="50px"
+            width={{ base: '100%', lg: 'auto' }}
             fontSize="24px"
+            pl={10}
+            pr={10}
             marginTop={{ base: '32px', sm: '40px', lg: '0px' }}
           >
             Search
           </Button>
         </Box>
         {!isValid && (
-          <Box mt="40px">
+          <Box mt={{ base: 8, sm: 10 }}>
             <Text
               fontWeight="400"
               fontSize="24px"
