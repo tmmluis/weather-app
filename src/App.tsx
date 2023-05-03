@@ -97,38 +97,49 @@ function App() {
   };
 
   return (
-    <Flex direction="column" height="100%">
-      <Flex
-        direction="column"
-        alignItems={{ base: 'flex-start', md: 'center' }}
-        pl={{ base: 6, md: 8, xl: 10 }}
-        pr={{ base: 6, md: 8, xl: 10 }}
-      >
-        <Box pt={6} pb={6} w={'100%'}>
-          <Header handleClick={handleLogoClick} />
-        </Box>
+    <Box height="100%" width={'100%'}>
+      <Flex direction="column" height="100%" position={'fixed'} width={'100%'}>
         <Flex
           direction="column"
-          align="center"
-          gap={{ base: 8, md: 10 }}
-          marginBottom={{ base: 20, xl: 40 }}
-          width={'100%'}
+          alignItems={{ base: 'flex-start', md: 'center' }}
+          pl={{ base: 6, md: 8, xl: 10 }}
+          pr={{ base: 6, md: 8, xl: 10 }}
         >
-          <SearchHeading location={searchToken} />
-          <SearchBar
-            fetchLocations={fetchLocations}
-            updateLocation={updateSearchToken}
-            location={searchToken}
-            ref={inputRef}
-            isValid={isSearchValid}
-          />
-          {hasLocations && <LocationsList locations={locations} />}
+          <Box pt={6} pb={6} w={'100%'}>
+            <Header handleClick={handleLogoClick} />
+          </Box>
+          <Flex
+            direction="column"
+            align="center"
+            gap={{ base: 8, md: 10 }}
+            marginBottom={{ base: 20, xl: 40 }}
+            width={'100%'}
+          >
+            <SearchHeading location={searchToken} />
+            <SearchBar
+              fetchLocations={fetchLocations}
+              updateLocation={updateSearchToken}
+              location={searchToken}
+              ref={inputRef}
+              isValid={isSearchValid}
+            />
+          </Flex>
         </Flex>
+        <Box flexGrow="1">
+          <Background isPhoto={!hasLocations} />
+        </Box>
       </Flex>
-      <Box flexGrow="1">
-        <Background isPhoto={!hasLocations} />
-      </Box>
-    </Flex>
+      <Flex
+        flexDir={'column'}
+        position={'relative'}
+        zIndex={'1'}
+        pl={{ base: 6, md: 8 }}
+        pr={{ base: 6, md: 8 }}
+        alignItems={'center'}
+      >
+        {hasLocations && <LocationsList locations={locations} />}
+      </Flex>
+    </Box>
   );
 }
 

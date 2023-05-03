@@ -8,7 +8,7 @@ type LocationsListProps = {
 
 export function LocationsList({ locations }: LocationsListProps) {
   return (
-    <Box zIndex={1} pt={{ base: '68px', md: '88px' }}>
+    <Box width={{ base: '100%', xl: 'auto' }}>
       {locations.map((location: LocationData) => (
         <WeatherCard
           location={location}

@@ -18,10 +18,7 @@ export function WeatherCard({ location }: WeatherCardProps) {
     <Box
       border="1px solid #E2E8F0"
       width={{
-        base: '342px',
-        sm: '432px',
-        md: '704px',
-        lg: '928px',
+        base: '100%',
         xl: '752px',
       }}
       height={{ base: '222px', md: '263px' }}
