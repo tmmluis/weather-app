@@ -98,22 +98,30 @@ function App() {
 
   return (
     <Flex direction="column" height="100%">
-      <Header handleClick={handleLogoClick} />
       <Flex
-        className="App"
         direction="column"
-        align="center"
-        marginBottom={{ base: '80px', xl: '160px' }}
+        alignItems={{ base: 'flex-start', md: 'center' }}
+        pl={{ base: 6, md: 8, xl: 10 }}
+        pr={{ base: 6, md: 8, xl: 10 }}
       >
-        <SearchHeading location={searchToken} />
-        <SearchBar
-          fetchLocations={fetchLocations}
-          updateLocation={updateSearchToken}
-          location={searchToken}
-          ref={inputRef}
-          isValid={isSearchValid}
-        />
-        {hasLocations && <LocationsList locations={locations} />}
+        <Box pt={6} pb={6} w={'100%'}>
+          <Header handleClick={handleLogoClick} />
+        </Box>
+        <Flex
+          direction="column"
+          align="center"
+          marginBottom={{ base: '80px', xl: '160px' }}
+        >
+          <SearchHeading location={searchToken} />
+          <SearchBar
+            fetchLocations={fetchLocations}
+            updateLocation={updateSearchToken}
+            location={searchToken}
+            ref={inputRef}
+            isValid={isSearchValid}
+          />
+          {hasLocations && <LocationsList locations={locations} />}
+        </Flex>
       </Flex>
       <Box flexGrow="1">
         <Background isPhoto={!hasLocations} />
