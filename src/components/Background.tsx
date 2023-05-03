@@ -1,4 +1,4 @@
-import { Flex, Box, Image } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 import { Tag } from './Tag';
 import { City, getCity } from '../util/cities';
 import { useEffect, useState } from 'react';
@@ -19,12 +19,23 @@ export function Background({ isPhoto }: BackgroundProps) {
   }, [isPhoto]);
 
   return (
-    <Box zIndex="-1" height="100%" position="relative">
+    <Box zIndex="-1" height="100%">
       {isPhoto ? (
-        <Box key={city.name} className="fade-in" height="100%">
-          <Flex height="100%">
-            <Image src={city.image} flexGrow="1" objectFit="cover" />
-          </Flex>
+        <Box
+          key={city.name}
+          className="fade-in"
+          height="100%"
+          position={'relative'}
+        >
+          <Image
+            src={city.image}
+            position={'relative'}
+            height={0}
+            minHeight={'100%'}
+            width={0}
+            minWidth={'100%'}
+            objectFit={'cover'}
+          />
           <Box pos="absolute" bottom="0">
             <Tag city={city.name} country={city.country} />
           </Box>
