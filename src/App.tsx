@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     setContentHeight(contentRef.current?.clientHeight ?? minContentHeight);
-  }, []);
+  }, [contentRef]);
 
   const { height: windowHeight } = useWindowDimensions();
   const backgroundHeight = windowHeight - contentHeight;
