@@ -19,7 +19,7 @@ export function Background({ isPhoto }: BackgroundProps) {
   }, [isPhoto]);
 
   return (
-    <Box zIndex="-1" height="100%">
+    <Box zIndex="-1" height="100%" width={'100%'}>
       {isPhoto ? (
         <Box
           key={city.name}
@@ -41,7 +41,7 @@ export function Background({ isPhoto }: BackgroundProps) {
           </Box>
         </Box>
       ) : (
-        <Box backgroundColor="blue.50" height="100%" />
+        <Box backgroundColor="blue.50" height="100%" width={'100%'} />
       )}
     </Box>
   );

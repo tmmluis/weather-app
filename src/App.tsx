@@ -6,6 +6,7 @@ import { SearchHeading } from './components/SearchHeading';
 import { LocationsList } from './components/LocationsList';
 import { Background } from './components/Background';
 import './global.css';
+import { useWindowDimensions } from './util/useWindowDimensions';
 
 type WeatherData = {
   temperature: string;
@@ -28,6 +29,13 @@ function App() {
   const [isSearchValid, setIsSearchValid] = useState<boolean>(true);
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const { height: windowHeight } = useWindowDimensions();
+  const minContentHeight = 426;
+  const contentHeight = contentRef.current?.clientHeight ?? minContentHeight;
+  const backgroundHeight = windowHeight - contentHeight;
+
   const hasLocations = locations != null;
 
   const resetSearch = () => {
@@ -98,37 +106,50 @@ function App() {
 
   return (
     <Box height="100%" width={'100%'}>
-      <Flex direction="column" height="100%" position={'fixed'} width={'100%'}>
+      <Box
+        alignItems={{ base: 'flex-start', md: 'center' }}
+        pl={{ base: 6, md: 8, xl: 10 }}
+        pr={{ base: 6, md: 8, xl: 10 }}
+        ref={contentRef}
+        zIndex={'2'}
+        position={'fixed'}
+        bg={'white'}
+        width={'100%'}
+      >
+        <Box pt={6} pb={6} w={'100%'}>
+          <Header handleClick={handleLogoClick} />
+        </Box>
         <Flex
           direction="column"
-          alignItems={{ base: 'flex-start', md: 'center' }}
-          pl={{ base: 6, md: 8, xl: 10 }}
-          pr={{ base: 6, md: 8, xl: 10 }}
+          align="center"
+          gap={{ base: 8, md: 10 }}
+          marginBottom={{
+            base: 16,
+            md: 20,
+          }}
+          width={'100%'}
         >
-          <Box pt={6} pb={6} w={'100%'}>
-            <Header handleClick={handleLogoClick} />
-          </Box>
-          <Flex
-            direction="column"
-            align="center"
-            gap={{ base: 8, md: 10 }}
-            marginBottom={{ base: 20, xl: 40 }}
-            width={'100%'}
-          >
-            <SearchHeading location={searchToken} />
-            <SearchBar
-              fetchLocations={fetchLocations}
-              updateLocation={updateSearchToken}
-              location={searchToken}
-              ref={inputRef}
-              isValid={isSearchValid}
-            />
-          </Flex>
+          <SearchHeading location={searchToken} />
+          <SearchBar
+            fetchLocations={fetchLocations}
+            updateLocation={updateSearchToken}
+            location={searchToken}
+            ref={inputRef}
+            isValid={isSearchValid}
+          />
         </Flex>
-        <Box flexGrow="1">
-          <Background isPhoto={!hasLocations} />
-        </Box>
-      </Flex>
+      </Box>
+      <Box
+        zIndex={'-1'}
+        height={backgroundHeight}
+        width={'100%'}
+        position={'fixed'}
+        bottom={0}
+        left={0}
+        paddingTop={{ base: hasLocations ? 20 : 0, xl: 20 }}
+      >
+        <Background isPhoto={!hasLocations} />
+      </Box>
       <Flex
         flexDir={'column'}
         position={'relative'}
@@ -136,6 +157,7 @@ function App() {
         pl={{ base: 6, md: 8 }}
         pr={{ base: 6, md: 8 }}
         alignItems={'center'}
+        top={contentHeight}
       >
         {hasLocations && <LocationsList locations={locations} />}
       </Flex>
