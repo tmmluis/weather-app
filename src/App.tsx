@@ -1,5 +1,5 @@
 import { SearchBar } from './components/SearchBar';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Flex, Box } from '@chakra-ui/react';
 import { Header } from './components/Header';
 import { SearchHeading } from './components/SearchHeading';
@@ -10,16 +10,20 @@ import { useWindowDimensions } from './util/useWindowDimensions';
 import { LocationData, fetchLocations } from './util/fetchLocations';
 
 function App() {
+  const minContentHeight = 426;
   const [locations, setLocations] = useState<LocationData[] | null>(null);
   const [searchToken, setSearchToken] = useState<string>('');
   const [isSearchValid, setIsSearchValid] = useState<boolean>(true);
+  const [contentHeight, setContentHeight] = useState<number>(minContentHeight);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    setContentHeight(contentRef.current?.clientHeight ?? minContentHeight);
+  }, []);
+
   const { height: windowHeight } = useWindowDimensions();
-  const minContentHeight = 426;
-  const contentHeight = contentRef.current?.clientHeight ?? minContentHeight;
   const backgroundHeight = windowHeight - contentHeight;
 
   const hasLocations = locations != null;
