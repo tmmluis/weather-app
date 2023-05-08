@@ -89,8 +89,7 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
           <Button
             onClick={handleSearchButtonClick}
             variant="solid"
-            bg="blue.400"
-            color="white"
+            colorScheme="weather"
             leftIcon={<Search2Icon fontSize="20px" mr={3} />}
             borderRadius="full"
             height="50px"
