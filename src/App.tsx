@@ -15,6 +15,7 @@ function App() {
   const [searchToken, setSearchToken] = useState<string>('');
   const [isSearchValid, setIsSearchValid] = useState<boolean>(true);
   const [contentHeight, setContentHeight] = useState<number>(minContentHeight);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -29,7 +30,9 @@ function App() {
   const hasLocations = locations != null;
 
   const handleSearch = async () => {
+    setIsLoading(true);
     const locations = await fetchLocations(searchToken);
+    setIsLoading(false);
     setLocations(locations);
 
     if (locations) {
@@ -41,6 +44,7 @@ function App() {
   };
 
   const resetSearch = () => {
+    setIsLoading(false);
     setLocations(null);
     setIsSearchValid(true);
     setSearchToken('');
@@ -90,6 +94,7 @@ function App() {
             location={searchToken}
             ref={inputRef}
             isValid={isSearchValid}
+            isLoading={isLoading}
           />
         </Flex>
       </Box>

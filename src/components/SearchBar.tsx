@@ -18,11 +18,18 @@ type SearchBarProps = {
   updateLocation: (location: string) => void;
   location: string | null;
   isValid: boolean;
+  isLoading: boolean;
 };
 
 export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   (
-    { fetchLocations, updateLocation, location, isValid }: SearchBarProps,
+    {
+      fetchLocations,
+      updateLocation,
+      location,
+      isValid,
+      isLoading,
+    }: SearchBarProps,
     ref
   ) => {
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -90,6 +97,7 @@ export const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             onClick={handleSearchButtonClick}
             variant="solid"
             colorScheme="weather"
+            isLoading={isLoading}
             leftIcon={<Search2Icon fontSize="20px" mr={3} />}
             borderRadius="full"
             height="50px"
