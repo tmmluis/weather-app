@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { LocationData } from '../App';
+import { LocationData } from '../util/fetchLocations';
 import { WeatherCard } from './WeatherCard';
 
 type LocationsListProps = {
