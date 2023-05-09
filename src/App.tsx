@@ -8,7 +8,7 @@ import { Background } from './components/Background';
 import './global.css';
 import { useWindowDimensions } from './util/useWindowDimensions';
 import { fetchLocations } from './util/fetchLocations';
-import { reducer } from './appReducer';
+import { reducer } from './util/appReducer';
 
 function App() {
   const initialState = {

@@ -1,4 +1,4 @@
-import { LocationData } from './util/fetchLocations';
+import { LocationData } from './fetchLocations';
 
 type State = {
   locations: LocationData[] | null;
