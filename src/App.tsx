@@ -61,10 +61,6 @@ function App() {
     }
   };
 
-  const handleLogoClick = () => {
-    resetSearch();
-  };
-
   return (
     <Box height="100%" width={'100%'}>
       <Box
@@ -78,7 +74,7 @@ function App() {
         width={'100%'}
       >
         <Box pt={6} pb={6} w={'100%'}>
-          <Header handleClick={handleLogoClick} />
+          <Header handleClick={resetSearch} />
         </Box>
         <Flex
           direction="column"
