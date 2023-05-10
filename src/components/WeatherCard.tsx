@@ -1,6 +1,6 @@
 import { Box, Divider } from '@chakra-ui/react';
 import { getWeatherFromCode } from '../util/weatherCodes';
-import { LocationData } from '../App';
+import { LocationData } from '../util/fetchLocations';
 import { CardLocation } from './CardLocation';
 import { CardInfo } from './CardInfo';
 
